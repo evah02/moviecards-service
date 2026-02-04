@@ -7,12 +7,19 @@
 
 package com.lauracercas.moviecards.model;
 
-import org.springframework.format.annotation.DateTimeFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Actor {
@@ -24,6 +31,9 @@ public class Actor {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthDate;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date deadDate;
 
     private String country;
 
@@ -63,6 +73,15 @@ public class Actor {
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
+
+    public Date getDeadDate() {
+    return deadDate;
+    }
+
+    public void setDeadDate(Date deadDate) {
+        this.deadDate = deadDate;
+    }
+
 
     public String getCountry() {
         return country;
